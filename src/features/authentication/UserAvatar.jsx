@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { useUser } from "./useUser";
+import { useEffect } from "react";
+import toast from "react-hot-toast";
 const StyledUserAvatar = styled.div`
   display: flex;
   gap: 1.2rem;
@@ -22,16 +24,23 @@ const Avatar = styled.img`
 
 function UserAvatar() {
   const { user } = useUser();
-  const { fullName, avatar } = user.user_metadata;
+  const { fullName, avatar, email } = user.user_metadata;
 
   return (
-    <StyledUserAvatar>
-      <Avatar
-        src={avatar || "default-user.jpg"}
-        alt={`Avatar of ${fullName}`}
-      />
-      <span>{fullName}</span>
-    </StyledUserAvatar>
+    <>
+      {user.email === "demo@demo.com" && (
+        <span>
+          UPDATE,INSERT,DELETE operations are not supported in demo mode
+        </span>
+      )}
+      <StyledUserAvatar>
+        <Avatar
+          src={avatar || "default-user.jpg"}
+          alt={`Avatar of ${fullName}`}
+        />
+        <span>{fullName}</span>
+      </StyledUserAvatar>
+    </>
   );
 }
 

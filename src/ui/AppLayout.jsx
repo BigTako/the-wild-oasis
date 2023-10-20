@@ -2,6 +2,8 @@ import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
 import styled from "styled-components";
+import { useUser } from "../features/authentication/useUser";
+import Spinner from "./Spinner";
 
 const StyledAppLayout = styled.div`
   display: grid;
